@@ -207,6 +207,22 @@ const closeCertModal = () => {
   if (!modalOpen.value) document.body.style.overflow = '';
 };
 
+// Scroll Animation Directive
+const vScrollAnimate = {
+  mounted: (el) => {
+    el.classList.add('scroll-animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(el);
+  }
+};
+
 // Lifecycle Hooks
 const activeSection = ref('home');
 let observer = null;
@@ -353,7 +369,7 @@ onUnmounted(() => {
       <!-- Hero Section -->
       <section id="home" class="min-h-screen flex items-center pt-32 pb-16 px-6 sm:px-8 max-w-7xl mx-auto overflow-hidden">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-          <div class="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
+          <div v-scroll-animate class="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight text-gray-900 w-full">
               {{ t.hero.title }} <br/>
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Moh. Syaeful Effendi.</span>
@@ -384,7 +400,7 @@ onUnmounted(() => {
             </div>
           </div>
           
-          <div class="relative flex justify-center perspective-1000 items-center h-full w-full order-1 lg:order-2"
+          <div v-scroll-animate class="relative flex justify-center perspective-1000 items-center h-full w-full order-1 lg:order-2"
                ref="tiltCard" 
                @mousemove="handleMouseMove" 
                @mouseleave="handleMouseLeave">
@@ -398,14 +414,14 @@ onUnmounted(() => {
       <!-- About Section -->
       <section id="about" class="py-20 md:py-32 px-6 sm:px-8 bg-gray-50 overflow-hidden">
         <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div class="order-2 lg:order-1 flex justify-center w-full">
+          <div v-scroll-animate class="order-2 lg:order-1 flex justify-center w-full">
             <div class="w-full max-w-[16rem] sm:max-w-sm md:max-w-md aspect-square bg-blue-100 rounded-[2rem] sm:rounded-[3rem] p-3 sm:p-4 rotate-3 hover:rotate-0 transition-transform duration-500">
                <div class="w-full h-full bg-white rounded-[1.5rem] sm:rounded-[2.5rem] flex items-center justify-center text-blue-300 overflow-hidden shadow-sm">
                  <img src="./assets/Foto2.jpg" alt="About Image" class="w-full h-full object-cover">
                </div>
             </div>
           </div>
-          <div class="order-1 lg:order-2 space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div v-scroll-animate class="order-1 lg:order-2 space-y-6 sm:space-y-8 text-center lg:text-left">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight uppercase" v-html="t.about.title">
             </h2>
             <div class="border-l-4 border-purple-500 pl-4 sm:pl-6 text-base sm:text-lg text-gray-600 font-medium leading-relaxed" v-html="t.about.desc">
@@ -420,7 +436,7 @@ onUnmounted(() => {
 
       <!-- Tech Skills -->
       <section id="skills" class="py-16 sm:py-24 overflow-hidden bg-white flex flex-col gap-6 sm:gap-10">
-        <div class="text-center mb-6 sm:mb-10">
+        <div v-scroll-animate class="text-center mb-6 sm:mb-10">
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
             <span class="text-gray-900">Tech </span><span class="text-blue-600">Skills.</span>
           </h2>
@@ -447,12 +463,12 @@ onUnmounted(() => {
 
       <!-- Certificates Section -->
       <section id="certificates" class="py-20 md:py-32 px-6 sm:px-8 max-w-7xl mx-auto bg-gray-50 rounded-[2rem] sm:rounded-[3rem] mb-12">
-        <div class="text-center mb-10 sm:mb-16">
+        <div v-scroll-animate class="text-center mb-10 sm:mb-16">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">{{ t.contact.certificates }}</h2>
           <p class="text-gray-500 font-light max-w-xl mx-auto text-sm sm:text-base">{{ t.contact.certSub }}</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          <div v-for="(cert, index) in certificatesData" :key="index" @click="openCertModal(cert)" class="group bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer flex flex-col items-center">
+          <div v-for="(cert, index) in certificatesData" :key="index" @click="openCertModal(cert)" v-scroll-animate class="group bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer flex flex-col items-center">
             <div class="w-full aspect-[4/3] bg-gray-50 rounded-xl overflow-hidden relative flex items-center justify-center mb-4 group-hover:scale-[1.02] transition-transform duration-300 shadow-sm">
               <img :src="cert.image" :alt="cert.title" class="w-full h-full object-cover" />
             </div>
@@ -464,12 +480,12 @@ onUnmounted(() => {
       <!-- Work Experience -->
       <section id="experience" class="py-20 md:py-32 px-6 sm:px-8 bg-white">
         <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-10 sm:mb-16">
+          <div v-scroll-animate class="text-center mb-10 sm:mb-16">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">{{ t.experience.title }}</h2>
           </div>
           <div class="relative border-l-2 border-blue-100 ml-3 sm:ml-4 md:ml-0 md:pl-0 md:mx-auto md:w-3/4 space-y-10 sm:space-y-12">
             <!-- Timeline Item -->
-            <div class="ml-6 sm:ml-8 md:ml-12 relative group">
+            <div v-scroll-animate class="ml-6 sm:ml-8 md:ml-12 relative group">
               <div class="absolute -left-9 sm:-left-[2.35rem] md:-left-[3.25rem] mt-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-500 ring-4 ring-blue-50 group-hover:ring-blue-100 transition-all"></div>
               <div class="bg-gray-50 p-5 sm:p-6 rounded-2xl border border-gray-100 group-hover:shadow-md transition-shadow">
                 <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{{ t.experience.role1 }}</h3>
@@ -483,13 +499,13 @@ onUnmounted(() => {
 
       <!-- Projects -->
       <section id="projects" class="py-20 md:py-32 px-6 sm:px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-10 sm:mb-16">
+        <div v-scroll-animate class="text-center mb-10 sm:mb-16">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">{{ t.projects.title }}</h2>
           <p class="text-gray-500 font-light max-w-xl mx-auto text-sm sm:text-base">{{ t.projects.desc }}</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <div v-for="(project, index) in projects" :key="index" 
-               @click="openModal(project)"
+               @click="openModal(project)" v-scroll-animate
                class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 hover:border-blue-100 transition-all duration-300 cursor-pointer group flex flex-col h-full">
             <div class="aspect-video bg-gray-50 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden relative border border-gray-100 flex items-center justify-center">
               <img v-if="project.image" :src="project.image" :alt="project.title" class="w-full h-full object-cover" />
@@ -510,7 +526,7 @@ onUnmounted(() => {
       <!-- Contact -->
       <section id="contact" class="py-20 md:py-24 px-6 sm:px-8 bg-gray-900 text-white rounded-t-[2rem] sm:rounded-t-[3rem] mt-12 overflow-hidden">
         <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
-          <div class="space-y-8 sm:space-y-10 text-center lg:text-left">
+          <div v-scroll-animate class="space-y-8 sm:space-y-10 text-center lg:text-left">
             <div>
               <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight">{{ t.contact.title }}<br class="hidden sm:block"/><span class="text-blue-400">{{ t.contact.titleBlue }}</span></h2>
               <p class="text-gray-400 font-light text-base sm:text-lg">{{ t.contact.subtitle }}</p>
@@ -536,7 +552,7 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-          <div class="bg-gray-800 p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-700 shadow-2xl w-full max-w-lg mx-auto">
+          <div v-scroll-animate class="bg-gray-800 p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-700 shadow-2xl w-full max-w-lg mx-auto">
             <form class="space-y-4 sm:space-y-5" @submit.prevent="sendMessage">
               <div>
                 <label class="block text-xs sm:text-sm text-gray-400 mb-1.5 sm:mb-2 font-medium">{{ t.contact.name }}</label>
@@ -710,5 +726,24 @@ html {
 @keyframes scroll-right {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0%); }
+}
+
+/* Scroll Animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
