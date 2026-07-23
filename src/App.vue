@@ -135,7 +135,7 @@ const projects = computed(() => {
         desc: "Layanan pembuatan website terjangkau untuk UMKM.", 
         fullDesc: "Sistem ini menjual jasa pembuatan website dengan harga terjangkau guna membantu UMKM memiliki website sendiri, serta terintegrasi dengan metode pembayaran QR Code (Midtrans).",
         link: "https://github.com/SyaefulEffendi/cuanin",
-        image: null
+        image: cuaninLogo
       }
     ];
   } else {
