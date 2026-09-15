@@ -131,6 +131,18 @@ const projects = computed(() => {
         image: bahasakuLogo
       },
       { 
+        title: "Rintisku", 
+        desc: "Sistem aplikasi web untuk mengelola operasional bisnis.", 
+        fullDesc: "Aplikasi ini berfungsi untuk membantu mengelola operasional bisnis secara efisien.",
+        link: "https://rintisku.id/"
+      },
+      { 
+        title: "DSS Rintisku", 
+        desc: "Decision Support System (DSS) untuk Rintisku.", 
+        fullDesc: "Sistem Pendukung Keputusan (DSS) yang membantu analisis dan pengambilan keputusan bisnis.",
+        link: "https://dss.rintisku.id/"
+      },
+      { 
         title: "Cuanin", 
         desc: "Layanan pembuatan website terjangkau untuk UMKM.", 
         fullDesc: "Sistem ini menjual jasa pembuatan website dengan harga terjangkau guna membantu UMKM memiliki website sendiri, serta terintegrasi dengan metode pembayaran QR Code (Midtrans).",
@@ -153,6 +165,18 @@ const projects = computed(() => {
         fullDesc: "The mobile version of the Bahasaku sign language translation system, allowing users to translate hand gestures in real-time directly through their smartphones.",
         link: "https://github.com/SyaefulEffendi/Bahasaku-Mobile-V1",
         image: bahasakuLogo
+      },
+      { 
+        title: "Rintisku", 
+        desc: "Web application system to manage business operations.", 
+        fullDesc: "This application functions to help manage business operations efficiently.",
+        link: "https://rintisku.id/"
+      },
+      { 
+        title: "DSS Rintisku", 
+        desc: "Decision Support System (DSS) for Rintisku.", 
+        fullDesc: "Decision Support System (DSS) that helps business analysis and decision making.",
+        link: "https://dss.rintisku.id/"
       },
       { 
         title: "Cuanin", 
