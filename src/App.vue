@@ -7,6 +7,7 @@ import cert3 from './assets/Certificates/Database Engineer Capstone.jpg';
 import cert4 from './assets/Certificates/Web Design Wireframe to Prototypes.jpg';
 import cert5 from './assets/Certificates/Web Design Strategy and Information.jpg';
 import cert6 from './assets/Certificates/User Experience Design.jpg';
+import cert7 from './assets/Certificates/Google Gemini.png';
 import bahasakuLogo from './assets/project/Logo Bahasaku.jpg';
 import cuaninLogo from './assets/project/Cuanin.jpg';
 
@@ -17,7 +18,8 @@ const certificatesData = [
   { title: 'Database Engineer Capstone', issuer: 'Meta', link: 'https://www.coursera.org/account/accomplishments/verify/69JGARHF70K3', image: cert3 },
   { title: 'Web Design: Wireframes to Prototypes', issuer: 'California Institute of the Arts', link: 'https://www.coursera.org/account/accomplishments/verify/BZ9B4HWYN4ZZ', image: cert4 },
   { title: 'Web Design: Strategy and Information Architecture', issuer: 'California Institute of the Arts', link: 'https://www.coursera.org/account/accomplishments/verify/622NIJZXNWBK', image: cert5 },
-  { title: 'User experience design', issuer: 'University of Cambridge', link: 'https://www.coursera.org/account/accomplishments/verify/O4IQ1YC66R31', image: cert6 }
+  { title: 'User experience design', issuer: 'University of Cambridge', link: 'https://www.coursera.org/account/accomplishments/verify/O4IQ1YC66R31', image: cert6 },
+  { title: 'Google Gemini', issuer: 'Google', link: 'https://edu.google.accredible.com/6b002833-5e46-4fa8-9310-550ab4d88e71#acc.7VHpGW2c', image: cert7 }
 ];
 
 // Language State & Translations
